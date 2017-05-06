@@ -1,15 +1,17 @@
 import React, {Component} from "react";
-import {View, Text} from "react-native";
+import {Text, View} from "react-native";
+import {Header} from "./components/common";
 
-class App extends Component{
+class App extends Component {
 
-    render(){
-        return(
+    render() {
+        return (
             <View>
+                <Header headerText="authentication"/>
                 <Text>An App!</Text>
             </View>
         );
-    };
+    }
 }
 
 export default App;

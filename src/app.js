@@ -8,9 +8,7 @@ class App extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            loggedIn: false
-        };
+        this.state = {loggedIn: null};
     }
 
     componentWillMount() {
@@ -35,13 +33,12 @@ class App extends Component {
     }
 
     renderContent() {
-        switch (this.state.loggedIn) {
-            case true:
-                return <Button>Log Out</Button>;
-            case false:
-                return <LoginForm/>;
-            default:
-                return <Spinner size="large"/>;
+        if (this.state.loggedIn === true) {
+            return <Button onPress={() => firebase.auth().signOut()}>Log Out</Button>;
+        } else if (this.state.loggedIn === false) {
+            return <LoginForm/>;
+        } else {
+            return <Spinner/>;
         }
     }
 
